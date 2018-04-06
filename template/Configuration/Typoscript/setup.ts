@@ -25,13 +25,34 @@ constants.PDF = <img src="fileadmin/aures/media/pdf.gif">
 # INDEXED SEARCH ANWERFEN UND KONFIGURIEREN
 # ****************************************************
 plugin.tx_indexedsearch._DEFAULT_PI_VARS.lang = 0
+#plugin.tx_indexedsearch.templateFile = fileadmin/template/indexed_search_ergebnis_template.html
 
-plugin.tx_macinasearchbox_pi1 {
-  pidSearchpage = 52
-  templateFile = fileadmin/template/indexed_search_template.htm
+plugin.tx_indexedsearch {
+	
+	# Anzeige der Regeln unter dem einfachen Formular
+    settings.displayRules = 0
+	
+	settings.headerOnly = 1
+	
+	# erweiterte Suche abschalten
+    settings.displayAdvancedSearchLink = 0
+	
+	# zeige Anzahl der Treffer
+    settings.displayResultNumber = 0
+	
+	view {
+		templateRootPaths {
+			0 = EXT:indexed_search/Resources/Private/Templates/
+			10 = fileadmin/Extensions/indexed_search/Resources/Private/Templates/
+		}
+
+		partialRootPaths {
+			0 = EXT:indexed_search/Resources/Private/Partials/
+			10 = fileadmin/Extensions/indexed_search/Resources/Private/Partials/
+		}
+	}
 }
 
-plugin.tx_indexedsearch.templateFile = fileadmin/template/indexed_search_ergebnis_template.html
 
 # POWERMAIL
 # ****************************************************
@@ -82,13 +103,6 @@ temp.aktuelle_zeit {
   strftime = %H:%M
 }
 
-plugin.tx_thmailformplus_pi1.markers.date < temp.aktuelles_datum
-plugin.tx_thmailformplus_pi1.markers.time < temp.aktuelle_zeit
-plugin.tx_thmailformplus_pi1.fieldConf {
-  email {
-      errorCheck = email
-  }
-}
 
 # PAGE Objekt
 # ***************************************************
@@ -118,6 +132,9 @@ page.includeCSS {
 
   file10 = fileadmin/template/css/screen.css
   file10.media = screen
+  
+  suche = fileadmin/template/Extensions/indexed_search/Resources/Public/Css/Style.css
+  suche.media = screen
 }
 
 page.headerData = COA
@@ -252,7 +269,7 @@ page.10 {
    subparts.DOWNLOADS >
    subparts.DOWNLOADS = CONTENT
    subparts.DOWNLOADS {
-       # Die Tabelle aus der gelesen wird (Die einzigen zugelassenen Tabellen sind "pages" oder Tabellen mit dem Präfix "tt_","tx_","ttx_","fe_" oder "user_")
+    # Die Tabelle aus der gelesen wird (Die einzigen zugelassenen Tabellen sind "pages" oder Tabellen mit dem Präfix "tt_","tx_","ttx_","fe_" oder "user_")
     table=tt_content
 
     select.orderBy = sorting
@@ -265,7 +282,7 @@ page.10 {
    subparts.INHALT_MITTE >
    subparts.INHALT_MITTE = CONTENT
    subparts.INHALT_MITTE {
-       # Die Tabelle aus der gelesen wird (Die einzigen zugelassenen Tabellen sind "pages" oder Tabellen mit dem Präfix "tt_","tx_","ttx_","fe_" oder "user_")
+    # Die Tabelle aus der gelesen wird (Die einzigen zugelassenen Tabellen sind "pages" oder Tabellen mit dem Präfix "tt_","tx_","ttx_","fe_" oder "user_")
     table=tt_content
 
     select.orderBy = sorting
@@ -293,7 +310,7 @@ subparts.NAVIGATION {
 
     # Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse.
     20 = HMENU
-    20.wrap = <div class="collapse navbar-collapse" id="mainnavbar"><ul class="nav navbar-nav">|</ul><ul class="nav navbar-nav "><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a><ul class="dropdown-menu" style="padding:12px;"><form class="form-inline" action="/suche/" method="post"><div class="input-group"><input name="tx_indexedsearch[sword]" type="text" class="form-control" placeholder="Suchbegriff..."><input type="hidden" name="tx_indexedsearch[_sections]" value="0" /><input type="hidden" name="tx_indexedsearch[pointer]" value="0" /><input type="hidden" name="tx_indexedsearch[ext]" value="0" /><input type="hidden" name="tx_indexedsearch[lang]" value="0" /><span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button></span></div></form></ul></li></ul></div>
+    20.wrap = <div class="collapse navbar-collapse" id="mainnavbar"><ul class="nav navbar-nav">|</ul><ul class="nav navbar-nav "><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a><ul class="dropdown-menu" style="padding:12px;"><form class="form-inline" method="post" id="tx_indexedsearch" action="/suche/?no_cache=1&amp;tx_indexedsearch_pi2%5Baction%5D=search&amp;tx_indexedsearch_pi2%5Bcontroller%5D=Search&amp;cHash=eb772334c624b59a5f572cafaf42e1e3"><div><input type="hidden" name="tx_indexedsearch_pi2[__referrer][@extension]" value="IndexedSearch"><input type="hidden" name="tx_indexedsearch_pi2[__referrer][@vendor]" value="TYPO3\CMS"><input type="hidden" name="tx_indexedsearch_pi2[__referrer][@controller]" value="Search"><input type="hidden" name="tx_indexedsearch_pi2[__referrer][@action]" value="form"><input type="hidden" name="tx_indexedsearch_pi2[__referrer][arguments]" value="YTowOnt99dd5e2a3f30c434fd206d8f5c314eb893d0c591d"><input type="hidden" name="tx_indexedsearch_pi2[__referrer][@request]" value="a:4:{s:10:&quot;@extension&quot;;s:13:&quot;IndexedSearch&quot;;s:11:&quot;@controller&quot;;s:6:&quot;Search&quot;;s:7:&quot;@action&quot;;s:4:&quot;form&quot;;s:7:&quot;@vendor&quot;;s:9:&quot;TYPO3\CMS&quot;;}776fafa8d8bbb3fbd0776a4e39a8723f578323d7"><input type="hidden" name="tx_indexedsearch_pi2[__trustedProperties]" value="a:1:{s:6:&quot;search&quot;;a:15:{s:9:&quot;_sections&quot;;i:1;s:13:&quot;_freeIndexUid&quot;;i:1;s:7:&quot;pointer&quot;;i:1;s:3:&quot;ext&quot;;i:1;s:10:&quot;searchType&quot;;i:1;s:14:&quot;defaultOperand&quot;;i:1;s:9:&quot;mediaType&quot;;i:1;s:9:&quot;sortOrder&quot;;i:1;s:5:&quot;group&quot;;i:1;s:11:&quot;languageUid&quot;;i:1;s:4:&quot;desc&quot;;i:1;s:15:&quot;numberOfResults&quot;;i:1;s:14:&quot;extendedSearch&quot;;i:1;s:5:&quot;sword&quot;;i:1;s:12:&quot;submitButton&quot;;i:1;}}44c251a69e3c1dcd48f213ef0f0ea25c0f5eb397"></div><div class="tx-indexedsearch-hidden-fields"><input type="hidden" name="tx_indexedsearch_pi2[search][_sections]" value="0"><input id="tx_indexedsearch_freeIndexUid" type="hidden" name="tx_indexedsearch_pi2[search][_freeIndexUid]" value="_"><input id="tx_indexedsearch_pointer" type="hidden" name="tx_indexedsearch_pi2[search][pointer]" value="0"><input type="hidden" name="tx_indexedsearch_pi2[search][ext]" value=""><input type="hidden" name="tx_indexedsearch_pi2[search][searchType]" value="1"><input type="hidden" name="tx_indexedsearch_pi2[search][defaultOperand]" value="0"><input type="hidden" name="tx_indexedsearch_pi2[search][mediaType]" value="-1"><input type="hidden" name="tx_indexedsearch_pi2[search][sortOrder]" value="rank_flag"><input type="hidden" name="tx_indexedsearch_pi2[search][group]" value=""><input type="hidden" name="tx_indexedsearch_pi2[search][languageUid]" value="-1"><input type="hidden" name="tx_indexedsearch_pi2[search][desc]" value=""><input type="hidden" name="tx_indexedsearch_pi2[search][numberOfResults]" value="10"><input type="hidden" name="tx_indexedsearch_pi2[search][extendedSearch]" value=""></div><div class="input-group"><input class="tx-indexedsearch-searchbox-sword" id="tx-indexedsearch-searchbox-sword" type="text" name="tx_indexedsearch_pi2[search][sword]" value="" class="form-control" placeholder="Suchbegriff..."><span class="input-group-btn"><button class="btn btn-default" type="submit" name="tx_indexedsearch_pi2[search][submitButton]"><i class="glyphicon glyphicon-search"></i></button></span></div></form></ul></li></ul></div>
     20 {
         special.value = 0
         maxItems = 7
@@ -396,7 +413,7 @@ subparts.NAVIGATION {
   
    subparts.INHALT_RECHTS = CONTENT
    subparts.INHALT_RECHTS {
-       # Die Tabelle aus der gelesen wird (Die einzigen zugelassenen Tabellen sind "pages" oder Tabellen mit dem Präfix "tt_","tx_","ttx_","fe_" oder "user_")
+    # Die Tabelle aus der gelesen wird (Die einzigen zugelassenen Tabellen sind "pages" oder Tabellen mit dem Präfix "tt_","tx_","ttx_","fe_" oder "user_")
     table=tt_content
 
     select.orderBy = sorting
@@ -405,7 +422,7 @@ subparts.NAVIGATION {
   
   subparts.INHALT_LINKS = CONTENT
    subparts.INHALT_LINKS {
-       # Die Tabelle aus der gelesen wird (Die einzigen zugelassenen Tabellen sind "pages" oder Tabellen mit dem Präfix "tt_","tx_","ttx_","fe_" oder "user_")
+    # Die Tabelle aus der gelesen wird (Die einzigen zugelassenen Tabellen sind "pages" oder Tabellen mit dem Präfix "tt_","tx_","ttx_","fe_" oder "user_")
     table=tt_content
 
     select.orderBy = sorting

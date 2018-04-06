@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Indexed Search Engine example template</title>
+</head>
+<body>
+
+<h1>INDEXED SEARCH ENGINE TEMPLATES</h1>
+<h2>EXAMPLE</h2>
+<pre>
+<strong>Common markers:</strong>
+These are substituted in all indexed search engine templates:
+
+<em>Markers:</em>
+SEARCHFORM
+RULES
+HITS
+SWORD
+SWORD_PREV
+SWPCHECKED
+TYPE
+DEFOP
+MEDIA
+LANG
+SECTION
+ORDER
+DESC
+RESULTS
+GROUP
+EXTENDEDRESUME
+ADVANCEDSEARCH
+SHOWRESULTCOUNT
+PREVIOUS
+MIDDLE
+NEXT
+BROWSEBOX1
+WHATISSEARCHEDFOR
+HITS
+BROWSEBOX2
+NORESULTS
+ICON
+RESULTNUMBER
+TITLE
+RATING
+DESCRIPTION
+SIZE
+CREATED
+MODIFIED
+ACCESS
+LANGUAGE
+PATH
+DESCRIPTION
+SUBROW
+EXT
+SECHEADANCHOR
+SECHEADTITLE
+SECHEADCOUNTER
+SECTIONLINK
+
+<em>Stylesheets Markers (see sysext/index_search/pi/locallang.xml):</em>
+SUBMITSTYLE
+SWORDSTYLE
+TPARAMS
+WHATISSTYLE
+LISTSTYLE
+PBSTYLE
+TITLESTYLE
+ICONSTYLE
+TCAPTIONSTYLE
+PERCENTSTYLE
+INFOSTYLE
+STYLEDESCRIPTION
+INFOSTYLE2
+STYLESECHEAD
+STYLESECLINKS
+TPARAMSSECHEAD
+
+<em>Language Markers (see sysext/index_search/ext_typoscript_setup.txt):</em>
+LSEARCHFOR
+LADDTOCURRENTSEARCH
+LSUBMIT
+LFORMMATCH
+LSEARCHIN
+LFROMSECTION
+LORDERBY
+LFORMSTYLE
+LOTHERMATCHING
+    
+</pre>
+
+<h3>TEMPLATE_MAIN</h3>
+<em>This subpart is used to display the main page (i.e. default search form + rules + hits + pagebrowser)</em>
+<!-- ###MAIN### begin -->
+<h1>Suchergebnis</h1>
+    ###SEARCHFORM###
+    ###RULES###
+    ###HITS###
+<!-- ###MAIN### end -->
+
+<h3>TEMPLATE_DEFAULTSEARCH</h3>
+<em>This subpart is used to display the default search form</em>
+<!-- ###DEFAULTSEARCH### begin -->
+<!-- ###DEFAULTSEARCH### end -->    
+
+<h3>TEMPLATE_PAGEBROWSER</h3>
+This subpart is used to display the pagebrowser
+<!-- ###PAGEBROWSER### begin -->
+<div ###PBSTYLE###>
+    <p>###SHOWRESULTCOUNT###</p>
+	<p>###MIDDLE###</p>
+</div>
+<!-- ###PAGEBROWSER### end -->
+
+<h3>TEMPLATE_GETDISPLAYRESULTS</h3>
+<em>This subpart is used to display the getDisplayResults (i.e search-hits plus pagebrowser).</em>
+<!-- ###GETDISPLAYRESULTS### begin -->
+<div class="container_pdfartikel clearfix">
+    
+    <div ###WHATISSTYLE###><p>###WHATISSEARCHEDFOR###</p></div>
+</div>
+    ###HITS###
+    <!--###NORESULTS### begin-->
+        <p ###NORESULTSSTYLE###>###NORESULTS###</p>
+    <!--###NORESULTS### end-->
+<!-- ###GETDISPLAYRESULTS### end -->
+
+
+<h3>TEMPLATE_PRINTRESULTROW</h3>
+<em>This subpart is used to display the printResultRow (i.e single search-hit row).</em>
+<!-- ###PRINTRESULTROW### begin -->
+<div class="container_pdfartikel clearfix">
+<table ###TPARAMS###>
+    <tr ###TITLESTYLE###>
+        <td valign="top" ###ICONSTYLE###>###ICON###</td>
+        <td valign="top" nowrap="nowrap"><p>
+            <span ###TNUMBERSTYLE###>###RESULTNUMBER###: </span>
+            <span ###TCAPTIONSTYLE###>###TITLE###</span></p>
+        </td>
+    </tr>
+    <!--###RESUMSECTION###-->
+        <!--###RS_ITEM###-->
+            <tr>
+                <td></td>
+                <td ###STYLEDESCRIPTION###><p>###DESCRIPTION###</p></td>
+            </tr>
+        <!--###RS_ITEM###-->
+    <!--###RESUMSECTION###-->
+    
+    <!--###HEADERONLY###-->
+        <!--###HO_ITEM###-->
+            <tr>
+                <td></td>
+                <td ###STYLEDESCRIPTION###><p>###DESCRIPTION###</p></td>
+            </tr>
+        <!--###HO_ITEM###-->
+    <!--###HEADERONLY###-->
+    
+    <!--###SUBROWTITLE###-->
+        <!--###SR_TITLE###-->
+            <tr>
+                <td></td>
+                <td><p><br>###LOTHERMATCHING###<br><br><p></td>
+            </tr>    
+        <!--###SR_TITLE###-->            
+    <!--###SUBROWTITLE###-->
+    
+    <!--###SUBROWS###-->
+        <!--###SR_ITEM###-->
+            <tr>
+                <td></td>
+                <td><p>###SUBROW###</p></td>
+            </tr>
+        <!--###SR_ITEM###-->
+    <!--###SUBROWS###-->    
+</table>    
+</div>
+<!-- ###PRINTRESULTROW### end -->
+
+<h3>TEMPLATE_SECTIONHEADER</h3>
+<em>This subpart is used to display the SectionHeader.</em>
+<!-- ###SECTIONHEADER### begin -->
+<div ###STYLESECHEAD###>
+    <a name="###SECHEADANCHOR###"></a>
+    <table ###TPARAMSSECHEAD###>
+        <tr>
+            <td><h2>###SECHEADTTITLE###</h2></td>
+            <td align="right" nowrap="nowrap"><p>###SECHEADCOUNTER###</p></td>
+        </tr>
+    </table>
+</div>
+<!-- ###SECTIONHEADER### end -->
+
+
+<h3>TEMPLATE_SECTIONSLINKS</h3>
+<em>This subpart is used to display the printResultSectionLinks.</em>
+<!-- ###SECTIONSLINKS### begin -->
+<div ###STYLESECLINKS###>
+    <ul>
+        <!--###CONTENT###-->
+            <!--###LIST_ITEM###-->
+                <li>###SECTIONLINK###</li>
+            <!--###LIST_ITEM###-->
+        <!--###CONTENT###-->
+    </ul>
+</div>
+<!-- ###SECTIONSLINKS### end -->
+
+</body>
+</html>
